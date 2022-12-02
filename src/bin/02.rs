@@ -4,6 +4,7 @@ enum Symbol {
     Paper = 2,
     Scissors = 3,
 }
+
 #[derive(Debug, Copy, Clone)]
 enum State {
     Lose = 0,
@@ -66,6 +67,7 @@ impl Round {
 impl std::str::FromStr for Round {
     type Err = std::string::ParseError;
 
+    #[allow(clippy::iter_nth_zero)]
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let x = s.chars().nth(0).unwrap();
         let y = s.chars().nth(2).unwrap();
@@ -85,6 +87,7 @@ struct Intent {
 impl std::str::FromStr for Intent {
     type Err = std::string::ParseError;
 
+    #[allow(clippy::iter_nth_zero)]
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let x = s.chars().nth(0).unwrap();
         let y = s.chars().nth(2).unwrap();
