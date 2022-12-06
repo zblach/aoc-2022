@@ -1,22 +1,21 @@
 use std::collections::HashSet;
 
-fn window_detector(stream: &str, size: usize) -> Option<u32> {
+fn window_detector(stream: &str, size: usize) -> Option<usize> {
     let mut index = size;
     for candidate in stream.as_bytes().windows(size) {
-        let test: HashSet<&u8> = HashSet::from_iter(candidate);
-        if test.len() == size {
-            return Some(index as u32);
+        if HashSet::<&u8>::from_iter(candidate).len() == size {
+            return Some(index);
         }
         index += 1;
     }
     None
 }
 
-pub fn part_one(input: &str) -> Option<u32> {
+pub fn part_one(input: &str) -> Option<usize> {
     window_detector(input, 4)
 }
 
-pub fn part_two(input: &str) -> Option<u32> {
+pub fn part_two(input: &str) -> Option<usize> {
     window_detector(input, 14)
 }
 
