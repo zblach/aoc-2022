@@ -13,8 +13,7 @@ pub fn part_one(input: &str) -> Option<String> {
 
     let mut line_iter = input.lines();
 
-    loop {
-        let line = line_iter.next().unwrap();
+    for line in &mut line_iter {
         if line.starts_with(" 1 ") {
             break;
         }
@@ -48,7 +47,7 @@ pub fn part_one(input: &str) -> Option<String> {
         result.push(stk.pop_front().unwrap_or(' '))
     }
 
-    Some(result.clone())
+    Some(result)
 }
 
 pub fn part_two(input: &str) -> Option<String> {
@@ -62,8 +61,7 @@ pub fn part_two(input: &str) -> Option<String> {
 
     let mut line_iter = input.lines();
 
-    loop {
-        let line = line_iter.next().unwrap();
+    for line in &mut line_iter {
         if line.starts_with(" 1 ") {
             break;
         }
@@ -103,7 +101,7 @@ pub fn part_two(input: &str) -> Option<String> {
         result.push(stk.pop_front().unwrap_or(' '))
     }
 
-    Some(result.clone())
+    Some(result)
 }
 
 fn main() {
